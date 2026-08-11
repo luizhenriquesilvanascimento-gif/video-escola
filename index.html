@@ -1,20 +1,73 @@
-video.src =
-      "https://drive.google.com/file/d/1ayFwNiyBrbjhqb5a6_lnT8gpQghrnW9y/preview?autoplay=1&t="
-      + Date.now();
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  }
+  <title>Apresentações da Escola</title>
 
-  // Reinicia o vídeo após 21:13
-  setTimeout(function () {
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      overflow: hidden;
+    }
 
-    reiniciarVideo();
+    .video-container {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+    }
 
-    // Depois continua reiniciando a cada 21:13
-    setInterval(reiniciarVideo, duracao * 1000);
+    iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+  </style>
+</head>
 
-  }, duracao * 1000);
+<body>
 
-</script>
+  <div class="video-container">
+    <iframe
+      id="video"
+      src="https://drive.google.com/file/d/1ayFwNiyBrbjhqb5a6_lnT8gpQghrnW9y/preview?autoplay=1"
+      allow="autoplay; fullscreen"
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <script>
+    // Duração do vídeo: 21 minutos e 13 segundos
+    const duracao = 21 * 60 + 13;
+
+    function reiniciarVideo() {
+      const video = document.getElementById("video");
+
+      video.src =
+        "https://drive.google.com/file/d/1ayFwNiyBrbjhqb5a6_lnT8gpQghrnW9y/preview?autoplay=1&t="
+        + Date.now();
+    }
+
+    // Reinicia o vídeo após 21:13
+    setTimeout(function () {
+
+      reiniciarVideo();
+
+      // Continua reiniciando a cada 21:13
+      setInterval(reiniciarVideo, duracao * 1000);
+
+    }, duracao * 1000);
+  </script>
 
 </body>
 </html>
+```
