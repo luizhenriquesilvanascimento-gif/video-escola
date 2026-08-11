@@ -1,0 +1,20 @@
+video.src =
+      "https://drive.google.com/file/d/1ayFwNiyBrbjhqb5a6_lnT8gpQghrnW9y/preview?autoplay=1&t="
+      + Date.now();
+
+  }
+
+  // Reinicia o vídeo após 21:13
+  setTimeout(function () {
+
+    reiniciarVideo();
+
+    // Depois continua reiniciando a cada 21:13
+    setInterval(reiniciarVideo, duracao * 1000);
+
+  }, duracao * 1000);
+
+</script>
+
+</body>
+</html>
