@@ -18,18 +18,15 @@
     }
 
     .video-container {
-      position: relative;
       width: 100vw;
       height: 100vh;
     }
 
     iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
       width: 100%;
       height: 100%;
       border: 0;
+      display: block;
     }
   </style>
 </head>
@@ -46,26 +43,53 @@
   </div>
 
   <script>
-    // Duração do vídeo: 21 minutos e 13 segundos
-    const duracao = 21 * 60 + 13;
+
+    // =====================================================
+    // TEMPO DO VÍDEO
+    // 21 minutos e 13 segundos
+    // =====================================================
+
+    const duracaoVideo = (21 * 60 + 13) * 1000;
+
+
+    // =====================================================
+    // FUNÇÃO PARA REINICIAR O VÍDEO
+    // =====================================================
 
     function reiniciarVideo() {
+
       const video = document.getElementById("video");
 
+      console.log("Reiniciando vídeo...");
+
       video.src =
-        "https://drive.google.com/file/d/1ayFwNiyBrbjhqb5a6_lnT8gpQghrnW9y/preview?autoplay=1&t="
+        "https://drive.google.com/file/d/1ayFwNiyBrbjhqb5a6_lnT8gpQghrnW9y/preview?autoplay=1&loop=1&t="
         + Date.now();
+
     }
 
-    // Reinicia o vídeo após 21:13
-    setTimeout(function () {
 
-      reiniciarVideo();
+    // =====================================================
+    // LOOP INFINITO
+    // =====================================================
 
-      // Continua reiniciando a cada 21:13
-      setInterval(reiniciarVideo, duracao * 1000);
+    function iniciarLoop() {
 
-    }, duracao * 1000);
+      setTimeout(function () {
+
+        reiniciarVideo();
+
+        // Inicia novamente o contador
+        iniciarLoop();
+
+      }, duracaoVideo);
+
+    }
+
+
+    // Inicia o loop
+    iniciarLoop();
+
   </script>
 
 </body>
